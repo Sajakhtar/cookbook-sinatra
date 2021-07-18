@@ -43,14 +43,13 @@ get '/search' do
 end
 
 post '/import' do
-  @results = Service.new(params[:ingredient]).scrape_recipes
-  # CORS issue?
-  redirect to "/results?#{@results}"
+  # @results = Service.new(params[:ingredient]).scrape_recipes
+  # binding.pry
+  redirect to "/results/:#{params[:ingredient]}"
 end
 
-get "/results?#{@results}" do
-  # need @recipes = results from post /import
-  @recipes = recipes
+get '/results/:ingredient' do
+  @recipes = Service.new(params[:ingredient]).scrape_recipes
   erb :results
 end
 
