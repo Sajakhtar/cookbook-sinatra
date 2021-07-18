@@ -1,0 +1,16 @@
+<div>
+  <button><a href='/new'>Create</a></button>
+  <button><a href='/search'>Import</a></button>
+</div>
+
+<div>
+  <ol>
+    <% @recipes.each_with_index do |recipe, index| %>
+      <li>
+        <p><strong>[<%=recipe.done? ? 'x' : '_' %>] <%= recipe.name%></strong> (<%= recipe.rating%> / 5) <a href='/destroy/<%= index%>'>destroy</a></p>
+        <p>Preparation time: <%= recipe.prep_time%></p>
+        <p><%= recipe.description%></p>
+      </li>
+    <% end %>
+  </ol>
+</div>

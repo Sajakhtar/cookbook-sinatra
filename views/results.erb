@@ -1,0 +1,17 @@
+<div>
+  <ol>
+    <% @recipes.each_with_index do |recipe, index| %>
+      <li>
+        <p><strong><%= recipe.name%></strong> (<%= recipe.rating%> / 5)</p>
+        <p>Preparation time: <%= recipe.prep_time%></p>
+        <p><%= recipe.description%></p>
+      </li>
+    <% end %>
+  </ol>
+</div>
+
+<form action="/import" method="post">
+  <label for="import">Which recipe would you like to import? (enter index):</label><br>
+  <input type="text" id="import_index" name="import_index"><br>
+  <input type="submit" value="Search">
+</form>
